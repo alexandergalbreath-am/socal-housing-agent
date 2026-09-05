@@ -1,8 +1,8 @@
-name: Daily housing search
+name: Housing search
 
 on:
   schedule:
-    - cron: "30 14 * * *"   # 7:30 AM Pacific (14:30 UTC during PDT; adjust if you care about the PST hour shift)
+    - cron: "*/15 * * * *"   # every 15 minutes, all day, every day — free on a public repo
   workflow_dispatch: {}       # lets you trigger a run manually from the Actions tab
 
 permissions:
