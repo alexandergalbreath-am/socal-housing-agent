@@ -7,7 +7,9 @@ import sys
 from datetime import datetime, timezone
 
 from common import append_log, load_config, load_seen, save_seen
+from drive_time import drive_minutes
 from email_alerts import fetch_alert_listings
+from geocode import geocode
 from render_listings import render as render_listings
 from scrape_realtor import scrape_new_realtor_listings
 from send_digest import send_digest
@@ -37,6 +39,15 @@ def _process_alert_item(item, config, seen, claimed_urls):
     if baths is not None and baths < s["baths_min"]:
         return None
 
+    f = config["filters"]
+    address = item.get("address") or ""
+    city = item.get("city") or ""
+    lat, lon = geocode(address, city)
+    minutes = drive_minutes(lat, lon, f["anchor_lat"], f["anchor_lon"])
+    if minutes is not None and minutes > f["max_drive_minutes"]:
+        return None
+    drive_time_str = f"{minutes} min" if minutes is not None else "Unknown (couldn't geocode address)"
+
     note_parts = []
     if price is None:
         note_parts.append("Auto-parsed from email alert — verify price/beds/baths on the listing page")
@@ -49,14 +60,14 @@ def _process_alert_item(item, config, seen, claimed_urls):
     notes = " ".join(note_parts)
     return {
         "url": url,
-        "address": item.get("address") or item.get("context", "")[:100] or "(see link)",
-        "city": item.get("city") or "",
+        "address": address or item.get("context", "")[:100] or "(see link)",
+        "city": city,
         "price": price if price is not None else "unknown",
         "beds": beds if beds is not None else "?",
         "baths": baths if baths is not None else "?",
         "sqft": item.get("sqft") or "",
         "laundry": "Unknown",
-        "drive_time": "Not checked (email alert has no coordinates)",
+        "drive_time": drive_time_str,
         "source": item["source"],
         "notes": notes,
     }
