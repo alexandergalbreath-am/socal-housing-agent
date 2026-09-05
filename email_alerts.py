@@ -3,57 +3,79 @@
 Requires GMAIL_ADDRESS + GMAIL_APP_PASSWORD env vars (a Gmail "App Password",
 not the account password — see SETUP.md). This reads alerts the sites already
 send by design; it does not scrape or automate those sites in any way.
+
+These alert emails route links through the sender's email-marketing platform
+(e.g. click.email.homes.com), not the site's own domain, so listing details
+are pulled from the email's visible text rather than the link URL.
 """
 import email
 import imaplib
 import os
 import re
 from datetime import datetime, timedelta
+from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup
 
-SITE_PATTERNS = {
-    "Zillow": re.compile(r"https?://(?:www\.)?zillow\.com/homedetails/[^\s\"'<>]+"),
-    "Redfin": re.compile(r"https?://(?:www\.)?redfin\.com/[^\s\"'<>]*/home/\d+[^\s\"'<>]*"),
-    "Homes.com": re.compile(r"https?://(?:www\.)?homes\.com/property/[^\s\"'<>]+"),
+SENDER_DOMAINS = {
+    "zillow.com": "Zillow",
+    "redfin.com": "Redfin",
+    "homes.com": "Homes.com",
 }
-SENDER_DOMAINS = ["zillow.com", "redfin.com", "homes.com"]
+FOLDERS = ["INBOX", "[Gmail]/Spam"]
+EXCLUDE_LINK_KEYWORDS = ["unsubscribe", "preference", "privacy", "manage", "saved-search", "saved_search", "savedsearch"]
 
-PRICE_RE = re.compile(r"\$[\d,]{3,}")
-BEDS_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:bd|bed)", re.I)
-BATHS_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:ba|bath)", re.I)
+PRICE_RE = re.compile(r"\$([\d,]{3,})\s*/\s*mo", re.I)
+BEDS_BATHS_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:Beds?|Bds?)\D{0,6}?(\d+(?:\.\d+)?)\s*(?:Baths?|Ba)\b", re.I)
+SQFT_RE = re.compile(r"([\d,]+)\s*Sq\.?\s*Ft", re.I)
+ADDRESS_RE = re.compile(r"([0-9][\w\s.\-#]{2,40}?)\s*[•·|]\s*([A-Za-z][A-Za-z\s]+,\s*[A-Z]{2}\s*\d{5})")
 
 
 def fetch_alert_listings(lookback_days=1):
-    """Returns a list of dicts: url, source, price, beds, baths, context (best-effort)."""
+    """Returns (listings, debug). `debug` reports what was actually seen in the
+    mailbox so "0 new listings" can be diagnosed instead of guessed at."""
     address = os.environ.get("GMAIL_ADDRESS")
     app_password = os.environ.get("GMAIL_APP_PASSWORD")
+    debug = {"emails_by_domain": {}, "folders_checked": [], "listings_extracted": 0, "skipped_non_listing": 0}
     if not address or not app_password:
-        return []
+        debug["skipped"] = "GMAIL_ADDRESS/GMAIL_APP_PASSWORD not set"
+        return [], debug
 
     imap = imaplib.IMAP4_SSL("imap.gmail.com")
     imap.login(address, app_password)
-    imap.select("INBOX")
 
     since = (datetime.utcnow() - timedelta(days=lookback_days)).strftime("%d-%b-%Y")
     results = []
     try:
-        for domain in SENDER_DOMAINS:
-            typ, data = imap.search(None, f'(SINCE {since} FROM "{domain}")')
-            if typ != "OK" or not data or not data[0]:
+        for folder in FOLDERS:
+            typ, _ = imap.select(folder)
+            if typ != "OK":
                 continue
-            for num in data[0].split():
-                typ, msg_data = imap.fetch(num, "(RFC822)")
-                if typ != "OK" or not msg_data or not msg_data[0]:
+            debug["folders_checked"].append(folder)
+            for domain, source in SENDER_DOMAINS.items():
+                typ, data = imap.search(None, f'(SINCE {since} FROM "{domain}")')
+                if typ != "OK" or not data or not data[0]:
                     continue
-                msg = email.message_from_bytes(msg_data[0][1])
-                html = _get_html_body(msg)
-                if html:
-                    results.extend(_extract_listings(html))
+                msg_nums = data[0].split()
+                debug["emails_by_domain"][domain] = debug["emails_by_domain"].get(domain, 0) + len(msg_nums)
+                for num in msg_nums:
+                    typ, msg_data = imap.fetch(num, "(RFC822)")
+                    if typ != "OK" or not msg_data or not msg_data[0]:
+                        continue
+                    msg = email.message_from_bytes(msg_data[0][1])
+                    html = _get_html_body(msg)
+                    if not html:
+                        continue
+                    parsed = _parse_listing_alert(html, domain, source)
+                    if parsed:
+                        results.append(parsed)
+                    else:
+                        debug["skipped_non_listing"] += 1
     finally:
         imap.logout()
 
-    return results
+    debug["listings_extracted"] = len(results)
+    return results, debug
 
 
 def _get_html_body(msg):
@@ -70,40 +92,50 @@ def _get_html_body(msg):
     return None
 
 
-def _extract_listings(html):
+def _parse_listing_alert(html, domain, source):
     soup = BeautifulSoup(html, "html.parser")
-    full_text = soup.get_text(" ", strip=True)
-    found = []
-    seen_in_email = set()
+    text = soup.get_text(" ", strip=True)
 
-    for source, pattern in SITE_PATTERNS.items():
-        for match in pattern.finditer(html):
-            url = match.group(0).split('"')[0].split("'")[0]
-            if url in seen_in_email:
-                continue
-            seen_in_email.add(url)
+    beds_baths_match = BEDS_BATHS_RE.search(text)
+    price_match = PRICE_RE.search(text)
+    if not beds_baths_match or not price_match:
+        return None  # not a per-listing alert (welcome/verification/newsletter email)
 
-            context = ""
-            anchor = soup.find("a", href=lambda h: bool(h) and url in h)
-            if anchor:
-                container = anchor
-                for _ in range(4):
-                    if container.parent:
-                        container = container.parent
-                context = container.get_text(" ", strip=True)
-            if not context:
-                context = full_text
+    window = text[beds_baths_match.end():beds_baths_match.end() + 200]
+    sqft_match = SQFT_RE.search(window)
 
-            price_match = PRICE_RE.search(context)
-            beds_match = BEDS_RE.search(context)
-            baths_match = BATHS_RE.search(context)
+    addr_search_start = beds_baths_match.end() + (sqft_match.end() if sqft_match else 0)
+    addr_window = text[addr_search_start:addr_search_start + 150]
+    addr_match = ADDRESS_RE.search(addr_window)
 
-            found.append({
-                "url": url,
-                "source": source,
-                "price": price_match.group(0).replace("$", "").replace(",", "") if price_match else None,
-                "beds": beds_match.group(1) if beds_match else None,
-                "baths": baths_match.group(1) if baths_match else None,
-                "context": context[:300],
-            })
-    return found
+    url = _find_listing_link(soup, domain)
+    if not url:
+        return None  # can't dedupe or link to it without a URL
+
+    return {
+        "url": url,
+        "source": source,
+        "price": price_match.group(1).replace(",", ""),
+        "beds": beds_baths_match.group(1),
+        "baths": beds_baths_match.group(2),
+        "sqft": sqft_match.group(1).replace(",", "") if sqft_match else None,
+        "address": addr_match.group(1).strip() if addr_match else None,
+        "city": addr_match.group(2).split(",")[0].strip() if addr_match else None,
+        "context": text[:300],
+    }
+
+
+def _find_listing_link(soup, domain):
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        try:
+            host = urlparse(href).hostname or ""
+        except ValueError:
+            continue
+        if not host.endswith(domain):
+            continue
+        link_text = a.get_text(" ", strip=True).lower()
+        if any(kw in href.lower() or kw in link_text for kw in EXCLUDE_LINK_KEYWORDS):
+            continue
+        return href
+    return None

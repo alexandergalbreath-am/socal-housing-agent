@@ -40,12 +40,12 @@ def _process_alert_item(item, config, seen, claimed_urls):
     notes = "" if price is not None else "Auto-parsed from email alert — verify price/beds/baths on the listing page"
     return {
         "url": url,
-        "address": item.get("context", "")[:100] or "(see link)",
-        "city": "",
+        "address": item.get("address") or item.get("context", "")[:100] or "(see link)",
+        "city": item.get("city") or "",
         "price": price if price is not None else "unknown",
         "beds": beds if beds is not None else "?",
         "baths": baths if baths is not None else "?",
-        "sqft": "",
+        "sqft": item.get("sqft") or "",
         "laundry": "Unknown",
         "drive_time": "Not checked (email alert has no coordinates)",
         "source": item["source"],
@@ -58,23 +58,35 @@ def main():
     seen = load_seen(config)
 
     all_new = scrape_new_realtor_listings(config, seen)
+    realtor_found = len(all_new)
     claimed_urls = {item["url"] for item in all_new}
 
+    alert_debug = {}
     try:
-        alert_items = fetch_alert_listings(lookback_days=1)
+        alert_items, alert_debug = fetch_alert_listings(lookback_days=1)
     except Exception as e:
         alert_items = []
+        alert_debug = {"error": str(e)}
         print(f"warning: email alert fetch failed: {e}", file=sys.stderr)
 
+    alert_accepted = 0
     for raw in alert_items:
         processed = _process_alert_item(raw, config, seen, claimed_urls)
         if processed:
             all_new.append(processed)
             claimed_urls.add(processed["url"])
+            alert_accepted += 1
+
+    summary = {
+        "new_listings": len(all_new),
+        "realtor_found": realtor_found,
+        "alert_debug": alert_debug,
+        "alert_listings_accepted": alert_accepted,
+    }
 
     if not all_new:
         render_listings()  # keep the "last checked" timestamp fresh even with no new hits
-        print(json.dumps({"new_listings": 0}))
+        print(json.dumps(summary))
         return
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -91,8 +103,9 @@ def main():
     by_source = {}
     for item in all_new:
         by_source[item["source"]] = by_source.get(item["source"], 0) + 1
+    summary["by_source"] = by_source
 
-    print(json.dumps({"new_listings": len(all_new), "by_source": by_source}))
+    print(json.dumps(summary))
 
 
 if __name__ == "__main__":
