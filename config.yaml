@@ -18,7 +18,7 @@ filters:
   max_drive_minutes: 15    # via free OSRM routing, no API key needed
 
 email:
-  sender_address: "alexander.galbreath@amplemarket.com"   # app password supplied via GMAIL_APP_PASSWORD secret, never stored here
+  sender_address: "a.galbreath16@gmail.com"   # app password supplied via GMAIL_APP_PASSWORD secret, never stored here
   recipients:
     - "a.galbreath16@gmail.com"
     - "peter.cline@servicetosuccess.com"
