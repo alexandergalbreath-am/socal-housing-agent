@@ -4,7 +4,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-REPO_URL = "https://github.com/alexandergalbreath-am/socal-housing-agent"
+LISTINGS_URL = "https://github.com/alexandergalbreath-am/socal-housing-agent/blob/main/LISTINGS.md"
 
 
 def _format_drive_time(raw):
@@ -36,7 +36,7 @@ def send_digest(config, new_listings):
     body = (
         f"Scout here — found {count} new {plural} in Irvine / Costa Mesa:\n\n"
         + "\n\n".join(lines)
-        + f"\n\nFull running list + repo: {REPO_URL}"
+        + f"\n\nFull running list (every listing found, with dates): {LISTINGS_URL}"
     )
 
     msg = MIMEMultipart()
