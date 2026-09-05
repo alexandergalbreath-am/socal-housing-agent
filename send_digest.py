@@ -1,7 +1,17 @@
 import os
+import re
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+REPO_URL = "https://github.com/alexandergalbreath-am/socal-housing-agent"
+
+
+def _format_drive_time(raw):
+    raw = raw or "Unknown"
+    if re.match(r"^\d+\s*min$", raw.strip()):
+        return f"{raw} to Wild Goose Tavern"
+    return raw
 
 
 def send_digest(config, new_listings):
@@ -18,12 +28,13 @@ def send_digest(config, new_listings):
         lines.append(
             f"- {item.get('address') or '(address not parsed — open link)'}\n"
             f"  ${item.get('price', '?')}/mo · {item.get('beds', '?')}bd/{item.get('baths', '?')}ba · {item.get('source', '')}\n"
-            f"  Drive time: {item.get('drive_time', 'Unknown')}\n"
+            f"  Drive time: {_format_drive_time(item.get('drive_time'))}\n"
             f"  {item['url']}{note}"
         )
     body = (
         f"{len(new_listings)} new rental listing(s) found today in Irvine / Costa Mesa:\n\n"
         + "\n\n".join(lines)
+        + f"\n\nFull running list + repo: {REPO_URL}"
     )
 
     msg = MIMEMultipart()
