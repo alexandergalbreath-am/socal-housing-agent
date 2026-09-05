@@ -1,0 +1,29 @@
+# Housing search criteria — edit anytime, no code changes needed
+search:
+  locations:
+    - "Irvine, CA"
+    - "Costa Mesa, CA"
+  listing_type: "for_rent"
+  price_min: 4500          # $1500/person x 3
+  price_max: 6300          # $2100/person x 3
+  beds_min: 3
+  baths_min: 2.5           # 3/3 is ideal, 3/2.5 still shown
+  past_hours: 24           # only listings updated/posted in the last day
+
+filters:
+  require_laundry_keyword: true   # best-effort match on "in-unit", "washer", "dryer" in listing text
+  anchor_name: "Wild Goose Tavern, 436 E 17th St, Costa Mesa, CA 92627"
+  anchor_lat: 33.6301356
+  anchor_lon: -117.9106264
+  max_drive_minutes: 15    # via free OSRM routing, no API key needed
+
+email:
+  sender_address: "alexander.galbreath@amplemarket.com"   # app password supplied via GMAIL_APP_PASSWORD secret, never stored here
+  recipients:
+    - "a.galbreath16@gmail.com"
+    - "peter.cline@servicetosuccess.com"
+    - "luowens@chapman.edu"
+
+state:
+  seen_file: "data/seen_urls.json"
+  log_file: "data/listings_log.jsonl"
