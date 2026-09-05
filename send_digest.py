@@ -31,8 +31,10 @@ def send_digest(config, new_listings):
             f"  Drive time: {_format_drive_time(item.get('drive_time'))}\n"
             f"  {item['url']}{note}"
         )
+    count = len(new_listings)
+    plural = "listing" if count == 1 else "listings"
     body = (
-        f"{len(new_listings)} new rental listing(s) found today in Irvine / Costa Mesa:\n\n"
+        f"Scout here — found {count} new {plural} in Irvine / Costa Mesa:\n\n"
         + "\n\n".join(lines)
         + f"\n\nFull running list + repo: {REPO_URL}"
     )
@@ -40,7 +42,7 @@ def send_digest(config, new_listings):
     msg = MIMEMultipart()
     msg["From"] = sender
     msg["To"] = ", ".join(recipients)
-    msg["Subject"] = f"New rental listing(s) found — Irvine/Costa Mesa ({len(new_listings)})"
+    msg["Subject"] = f"The Fellas' Home Hunt \U0001F3E0 — Scout found {count} new {plural}"
     msg.attach(MIMEText(body, "plain"))
 
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
