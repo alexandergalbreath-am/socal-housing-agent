@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 
 from common import append_log, load_config, load_seen, save_seen
 from email_alerts import fetch_alert_listings
+from render_listings import render as render_listings
 from scrape_realtor import scrape_new_realtor_listings
 from send_digest import send_digest
 
@@ -72,6 +73,7 @@ def main():
             claimed_urls.add(processed["url"])
 
     if not all_new:
+        render_listings()  # keep the "last checked" timestamp fresh even with no new hits
         print(json.dumps({"new_listings": 0}))
         return
 
@@ -79,6 +81,7 @@ def main():
     append_log(config, [{**item, "date_found": today} for item in all_new])
     seen |= claimed_urls
     save_seen(config, seen)
+    render_listings()
 
     try:
         send_digest(config, all_new)
