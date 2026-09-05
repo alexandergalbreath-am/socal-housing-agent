@@ -37,7 +37,16 @@ def _process_alert_item(item, config, seen, claimed_urls):
     if baths is not None and baths < s["baths_min"]:
         return None
 
-    notes = "" if price is not None else "Auto-parsed from email alert — verify price/beds/baths on the listing page"
+    note_parts = []
+    if price is None:
+        note_parts.append("Auto-parsed from email alert — verify price/beds/baths on the listing page")
+    if item["source"] == "Homes.com":
+        note_parts.append(
+            "Verify this is actually For Rent before reaching out — Homes.com sometimes shows a "
+            "rent-estimate figure on For Sale listings too, and that can't be told apart from the "
+            "email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as \"$5,500/mo\")."
+        )
+    notes = " ".join(note_parts)
     return {
         "url": url,
         "address": item.get("address") or item.get("context", "")[:100] or "(see link)",
