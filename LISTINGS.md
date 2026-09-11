@@ -1,9 +1,10 @@
 # SoCal Housing Listings
 
-_Last checked: 2026-09-11 00:18 UTC — 21 total listing(s) tracked_
+_Last checked: 2026-09-11 00:44 UTC — 22 total listing(s) tracked_
 
 | Date Found | Address | City | Price/mo | Beds | Baths | Drive Time | Source | Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-09-11 | 31 Brisbane Ct | Tustin | 5300.0 | 4.0 | 3.0 | 15 min | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjQ5OTZ9AAEAAAAAAdN4lg2XRAnXghpek3QmF94Kd4aXA4HuGgmHaBOXr1POzbI1lc7JPjrWf7KynNwrJCYO3WeihwrnqkSV8N4M4ku5W3ro94gl1PSKu1936lJVhlRg) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
 | 2026-09-10 | 31 Dartmouth #32 | Irvine | 5300.0 | 3.0 | 3.0 | Unknown (couldn't geocode address) | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjQ5OTV9AAEAAAAAAc7tVkYgkbL3_pv-H34iRb7rZ2ayzMhCPWHsBnDWkoQscG-GZwYUJDEIMNdW6N6pdk0VyZXddgLhs3v8Y4FkPNrwGtDZd9zB2hqsqno8n4e626IY) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
 | 2026-09-10 | 31 Dartmouth | Irvine | 5300 | 3 | 3.0 | 14 min | Realtor.com | [link](https://www.realtor.com/rentals/details/31-Dartmouth_Irvine_CA_92612_M29187-53164) |  |
 | 2026-09-10 | 16 Lehigh Aisle #140 | Irvine | 5250.0 | 3.0 | 3.0 | 13 min | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjQ5OTV9AAEAAAAAAdK3H-cckJVvhOriP_Iy610cY_ROrG_c61KubQM1yiwCmLzRsfnsvCYOP6zumio-jQc1kuyARfKYHHroXVPlGFszp3mkbpEgCIDaQldEPfYHFuUi) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
