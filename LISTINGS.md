@@ -1,10 +1,11 @@
 # SoCal Housing Listings
 
-_Last checked: 2026-09-15 16:30 UTC — 50 total listing(s) tracked_
+_Last checked: 2026-09-15 16:54 UTC — 51 total listing(s) tracked_
 
 | Date Found | Address | City | Price/mo | Beds | Baths | Drive Time | Source | Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-09-15 | Zillow 114 Guinness 4 bd - 4 ba - 2,274 sqft͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌ |  | 5950.0 | 4.0 | 4.0 | Unknown (couldn't geocode address) | Zillow | [link](https://click.mail.zillow.com/f/a/D6YpFO1kbv7c0FzXVRafhw~~/AAAAARA~/wcgHI87gD5VPPYc1xmg4n5tlvYepBBiWqDH9WVx49Hx2NXv2ybbD7ryoI0F7oVCQdcP8nYPqng8GDh5y-mYTmL_2DIESeFJ1_8ZO3bt1skIIsEkuz7kM0iJ13OucAv3QfXA_qyj2V5tlAtcN_XImtQ~~?target=https%3A%2F%2Fwww.zillow.com%2F%3Frtoken%3D8e7fe4b0-3992-4324-a7d5-0bc186d1ec54%257EX1-ZU17tq6997o6i2x_5rw5l%26utm_campaign%3Demo-instant_home_recs_email_rent%26utm_source%3Demail%26utm_term%3Durn%3Amsg%3A2026091501175991cbd643da6e581d%26utm_medium%3Demail%26utm_content%3Dheaderzillowlogo) |  |
+| 2026-09-15 | 374 Hamilton St Unit A101 | Costa Mesa | 5250 | 3 | 2.5 | 5 min | Realtor.com | [link](https://www.realtor.com/rentals/details/374-Hamilton-St-Unit-A101_Costa-Mesa_CA_92627_M93080-58404) |  |
 | 2026-09-14 | 2338 Synergy | Irvine | 4800 | 4 | 3.5 | 13 min | Realtor.com | [link](https://www.realtor.com/rentals/details/2338-Synergy_Irvine_CA_92614_M28753-15409) |  |
 | 2026-09-14 | 2338 Synergy | Irvine | 4800.0 | 4.0 | 3.5 | 13 min | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjQ5OTl9AAEAAAAAAd2vO__H9wzzsE01we287eqKSfFj0RbshiWwqxXRkkTBg6fB2s4TShz3W3KdMQudNmBctFR3ysvPuFarn0Y-CJiRUOqraE6vjm9Q8Z-TfCiJPZupLw) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
 | 2026-09-14 | 20402 Santa Ana Ave #4 | Newport Beach | 4650.0 | 3.0 | 3.5 | Unknown (couldn't geocode address) | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjQ5OTl9AAEAAAAAAdz7TnyscmUt_r5H5CIPVG1sD-k7GmveicIJSPqA1mQYd6QvoNYcgq8X__WOXh-h2f_MA5BxJ1lnGUjgsWeImuvduJSu9sGIdmGvwnL2kNY7drnh6Q) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
