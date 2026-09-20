@@ -1,9 +1,11 @@
 # SoCal Housing Listings
 
-_Last checked: 2026-09-20 01:39 UTC — 81 total listing(s) tracked_
+_Last checked: 2026-09-20 01:52 UTC — 83 total listing(s) tracked_
 
 | Date Found | Address | City | Price/mo | Beds | Baths | Drive Time | Source | Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-09-20 | 24 Scripps Aisle | Irvine | 5195 | 3 | 3.0 | 12 min | Realtor.com | [link](https://www.realtor.com/rentals/details/24-Scripps-Aisle_Irvine_CA_92612_M29571-37084) |  |
+| 2026-09-20 | 24 Scripps Aisle | Irvine | 5195.0 | 3.0 | 3.0 | 12 min | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjUwMDV9AAEAAAAAAe0QIHgpHZ2cpLKDAEFPe8CruWM4CcF_R7l7PGrkF_4Eac5ulV1OXZNuT5i772Yg5d-WRBz76oFZNYAvQd7rLnYDDi56Xp6ROSIRjKzID1MtHRKugA) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
 | 2026-09-18 | Zillow We found 3 additional rentals matching your search.͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­ |  | 5500.0 | 3.0 | 3.0 | Unknown (couldn't geocode address) | Zillow | [link](https://click.mail.zillow.com/f/a/EKsuV6ZMFB_gLtegh3lQJQ~~/AAAAARA~/wQ4lRPjTJ1pmUJ2YSniCUBW7x2Q4clZjHad2CYv3ujI-GisRN37HeTY6Ym0GdybX-jUSh4hH5D7lb012_SFhXH-NBwIReP8O1F-jpXG7eqAAOcTaETqiuD89M7ZM2GHLlO_HKtrm7fHhYyD17MQ3Vw~~?target=https%3A%2F%2Fwww.zillow.com%2F%3Frtoken%3D8883e071-2a63-466f-abcf-e5c237ac99ab%257EX1-ZU17tq6997o6i2x_5rw5l%26utm_campaign%3Demo-instantsearchdigest-rental%26utm_source%3Demail%26utm_term%3Durn%3Acmp%3A20260918-76b759a6-659c-470d-a930-918dcc45fb05%26utm_medium%3Demail%26utm_content%3Dheaderzillowlogo) |  |
 | 2026-09-18 | 42 Partisan Pl | Irvine | 5500 | 5 | 3.0 | Unknown | Realtor.com | [link](https://www.realtor.com/rentals/details/42-Partisan-Pl_Irvine_CA_92602_M13387-59957) |  |
 | 2026-09-18 | 8 Hidalgo | Irvine | 5900 | 4 | 2.5 | Unknown | Realtor.com | [link](https://www.realtor.com/rentals/details/8-Hidalgo_Irvine_CA_92620_M13025-37461) |  |
