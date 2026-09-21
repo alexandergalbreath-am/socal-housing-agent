@@ -1,9 +1,10 @@
 # SoCal Housing Listings
 
-_Last checked: 2026-09-21 00:17 UTC — 86 total listing(s) tracked_
+_Last checked: 2026-09-21 00:45 UTC — 87 total listing(s) tracked_
 
 | Date Found | Address | City | Price/mo | Beds | Baths | Drive Time | Source | Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-09-21 | Zillow We found 1 additional rental matching your search.͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏ |  | 5500.0 | 5.0 | 3.0 | Unknown (couldn't geocode address) | Zillow | [link](https://click.mail.zillow.com/f/a/4clf-0drpOKWLgxyM9p81A~~/AAAAARA~/18y2WxNsw7tNpGqW6J4ddUe44dk8Od5ti2ymoF0HFCmlpDr1s0KmWBAKJfYv1fPYgxNMqgH52h8wgEP6-vPGxaGIISX8OQMdc_ZU5oOM9Ar__LM6rhNa-bJn5X82JDF8s6X1QXXbU-JyGdJFG0ZKCA~~?target=https%3A%2F%2Fwww.zillow.com%2F%3Frtoken%3D0a5bc2a3-9ef8-4112-b854-9d02f9be4a47%257EX1-ZU17tq6997o6i2x_5rw5l%26utm_campaign%3Demo-instantsearchdigest-rental%26utm_source%3Demail%26utm_term%3Durn%3Acmp%3A20260921-7797e34a-f306-4c87-a456-c0d979a4a6bc%26utm_medium%3Demail%26utm_content%3Dheaderzillowlogo) |  |
 | 2026-09-20 | 24 Scripps Aisle | Irvine | 5195 | 3 | 3.0 | 12 min | Realtor.com | [link](https://www.realtor.com/rentals/details/24-Scripps-Aisle_Irvine_CA_92612_M29571-37084) |  |
 | 2026-09-20 | 24 Scripps Aisle | Irvine | 5195.0 | 3.0 | 3.0 | 12 min | Homes.com | [link](https://click.email.homes.com/?qs=ABB7InYiOjEsImQiOjUwMDV9AAEAAAAAAe0QIHgpHZ2cpLKDAEFPe8CruWM4CcF_R7l7PGrkF_4Eac5ulV1OXZNuT5i772Yg5d-WRBz76oFZNYAvQd7rLnYDDi56Xp6ROSIRjKzID1MtHRKugA) | Verify this is actually For Rent before reaching out — Homes.com sometimes shows a rent-estimate figure on For Sale listings too, and that can't be told apart from the email alone (confirmed on 2026-09-05: a $1.785M for-sale home showed as "$5,500/mo"). |
 | 2026-09-20 | 265 Mesa Dr Unit B | Costa Mesa | 5800 | 3 | 2.5 | 6 min | Realtor.com | [link](https://www.realtor.com/rentals/details/265-Mesa-Dr-Unit-B_Costa-Mesa_CA_92627_M19325-66583) |  |
