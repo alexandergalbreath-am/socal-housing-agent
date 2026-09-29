@@ -21,8 +21,6 @@ email:
   sender_address: "a.galbreath16@gmail.com"   # app password supplied via GMAIL_APP_PASSWORD secret, never stored here
   recipients:
     - "a.galbreath16@gmail.com"
-    - "peter.cline@servicetosuccess.com"
-    - "luowens@chapman.edu"
 
 state:
   seen_file: "data/seen_urls.json"
