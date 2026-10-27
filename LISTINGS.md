@@ -1,9 +1,10 @@
 # SoCal Housing Listings
 
-_Last checked: 2026-10-26 21:08 UTC — 214 total listing(s) tracked_
+_Last checked: 2026-10-27 00:26 UTC — 215 total listing(s) tracked_
 
 | Date Found | Address | City | Price/mo | Beds | Baths | Drive Time | Source | Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|
+| 2026-10-27 | 2109 Harper Way | Costa Mesa | 6000 | 3 | 2.5 | 6 min | Realtor.com | [link](https://www.realtor.com/rentals/details/2109-Harper-Way_Costa-Mesa_CA_92627_M17264-81883) |  |
 | 2026-10-26 | Zillow We found 1 additional rental matching your search.͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏ |  | 5500.0 | 4.0 | 3.0 | Unknown (couldn't geocode address) | Zillow | [link](https://click.mail.zillow.com/f/a/Uw_J2-fVZEoq29yKBnvb-w~~/AAAAARA~/hBmwUYeMAtNmtfxka88zoBZdSULCaQQHCpGF-YQdkZfxvqvqE3M986fk8F3MGIH5cuZMmY9yf4rGV9OUlsLmRG5Pw2-LS3_NHOxgO4yJbHqr27EJ4ZzTUCaWFJVSaIOZSMPPNVJb_xow-NI7RFLwcw~~?target=https%3A%2F%2Fwww.zillow.com%2F%3Frtoken%3Dfe58865f-4729-4e07-85d3-29b227af5f62%257EX1-ZU17tq6997o6i2x_5rw5l%26utm_campaign%3Demo-instantsearchdigest-rental%26utm_source%3Demail%26utm_term%3Durn%3Acmp%3A20261026-eccb5edf-ee65-4ed1-b6cd-997041372209%26utm_medium%3Demail%26utm_content%3Dheaderzillowlogo) |  |
 | 2026-10-26 | 305 Ford Rd | Costa Mesa | 5250 | 3 | 3.0 | 5 min | Realtor.com | [link](https://www.realtor.com/rentals/details/305-Ford-Rd_Costa-Mesa_CA_92627_M90148-05337) |  |
 | 2026-10-25 | Zillow We found 2 additional rentals matching your search.͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­͏‌  ﻿­ |  | 6000.0 | 4.0 | 3.0 | Unknown (couldn't geocode address) | Zillow | [link](https://click.mail.zillow.com/f/a/eM90A4WXotR5GU7OR2H7aQ~~/AAAAARA~/7CgBhpF-85uAsJIAe_PAISIbIVa2N4KWyWQP80NasOupvqa_z6S_NiMGynnp4pU5QeDiwZXguiyntQxcj0xyjulX9CcbejPs7Ykl0GVF3iA3kEyU5WaNBSmn5jaxTj0YrwqPnia9NzWTsRgQbLVAmg~~?target=https%3A%2F%2Fwww.zillow.com%2F%3Frtoken%3Dd339339f-e6cf-4d96-b2b8-e398be610908%257EX1-ZU17tq6997o6i2x_5rw5l%26utm_campaign%3Demo-instantsearchdigest-rental%26utm_source%3Demail%26utm_term%3Durn%3Acmp%3A20261025-1560cb16-d5b0-477d-b659-3a137049c5c3%26utm_medium%3Demail%26utm_content%3Dheaderzillowlogo) |  |
