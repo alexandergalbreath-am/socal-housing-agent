@@ -1,6 +1,6 @@
 # SoCal Housing Listings
 
-_Last checked: 2026-11-15 20:30 UTC — 245 total listing(s) tracked_
+_Last checked: 2026-11-16 00:23 UTC — 245 total listing(s) tracked_
 
 | Date Found | Address | City | Price/mo | Beds | Baths | Drive Time | Source | Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|
